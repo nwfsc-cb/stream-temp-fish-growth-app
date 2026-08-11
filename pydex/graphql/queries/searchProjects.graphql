@@ -1,0 +1,58 @@
+  query searchProjects_query(
+    $searchParams: ProjectSearchParamsInput!
+    $sort: [SearchSortEnum!]
+    $limit: Int!
+    $offset: Int!
+    ) {
+      searchProjects(limit: $limit, offset: $offset, params: $searchParams, sort: $sort) {
+    results {
+      item {
+        id
+        name
+        tags
+        archived
+        visibility
+        totalSize
+        bounds {
+          id # Don't ask for any more than the ID or it will cause an extra dynamo record fetch
+        }
+        meta {
+          key
+          value
+        }
+        bounds {
+          id
+        }
+        projectType { id }
+        createdOn
+        updatedOn
+        # The extra record fetch here is unfortunate but the user/org name is just too useful
+        ownedBy {
+          ... on Organization {
+            id
+            name
+          }
+          ... on User {
+            id
+            name
+          }
+          __typename
+        }
+      }
+    }
+    total
+    # Stats are pretty cheap to calculate so we always get them
+    stats {
+    ... on ProjectSearchMeta {
+      searchTime
+      area
+      bbox
+      geoBuckets
+      maxScore
+      metaDataBuckets
+      projectTypes
+    }
+    __typename
+    }   
+  }
+}
