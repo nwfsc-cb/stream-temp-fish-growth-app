@@ -1,0 +1,37 @@
+[project]
+name = "fish-and-temp-app"
+version = "0.1.0"
+dependencies = [
+    "shiny",
+    "pandas",
+    "matplotlib",
+    "mapclassify",
+    "htmltools",
+    "pathlib",
+    "geopandas",
+    "downloader",
+    "folium>=0.12",
+    "datetime",
+    "polars",
+    "semver",
+    "rsxml",
+    "pyarrow",
+    "pynhd"
+]
+requires-python = ">=3.11"
+
+[tool.setuptools]
+packages = []
+
+[tool.pixi.workspace]
+channels = ["conda-forge"]
+platforms = ["win-64", "osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+fish-and-temp-app = { path = ".", editable = true }
+
+[tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+pynhd = ">=0.20.0,<0.21"
+shiny = ">=1.4.0,<2"
