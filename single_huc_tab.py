@@ -43,14 +43,14 @@ def single_huc_ui():
                     ui.input_text(
                         id="single_yearval",
                         label="Water Year Start:",
-                        placeholder="e.g. 1980",
+                        placeholder="Valid range: 1981-2020",
                     ),
                     ui.input_select(
                         id="stats_type",
-                        label="Statistics Mode:",
+                        label="Examine fish growth potential...",
                         choices={
-                            "temporal": "Temporal Statistics", 
-                            "spatial": "Spatial Statistics"
+                            "temporal": "...upstream and downstream of a point", 
+                            "spatial": "...annual variability by reach"
                         }
                     ),
                     ui.input_select(
@@ -357,8 +357,8 @@ def single_huc_server(input, output, session, base_dir, modules):
             return ui.div(
                 ui.h5(f"Temporal Fish Growth Statistics ({year} Water Year)", style="margin-top: 10px;"),
                 ui.div(
-                    ui.p(ui.HTML(f"<b>Upstream Network Mean:</b> {up_avg:.5f} g/g/w &nbsp;|&nbsp; <b>Variance:</b> {up_var:.5f}"), style="font-size: 1.1em; color: #0056b3; margin-bottom: 5px;"),
-                    ui.p(ui.HTML(f"<b>Other HUC Reaches Mean:</b> {non_up_avg:.5f} g/g/w &nbsp;|&nbsp; <b>Variance:</b> {non_up_var:.5f}"), style="font-size: 1.1em; color: #6c757d; margin-bottom: 0px;")
+                    ui.p(ui.HTML(f"<b>Upstream Network Mean:</b> {up_avg:.5f} % over 10 days &nbsp;|&nbsp; <b>Variance:</b> {up_var:.5f}"), style="font-size: 1.1em; color: #0056b3; margin-bottom: 5px;"),
+                    ui.p(ui.HTML(f"<b>Other HUC Reaches Mean:</b> {non_up_avg:.5f} % over 10 days &nbsp;|&nbsp; <b>Variance:</b> {non_up_var:.5f}"), style="font-size: 1.1em; color: #6c757d; margin-bottom: 0px;")
                 )
             )
             

@@ -133,9 +133,8 @@ def visualizer(gdf, flowlines_gdf, fish, season):
 
     season_map = dictionaries.FISH_SEASON if fish else dictionaries.SEASONS
     column_to_plot = season_map[season]
-    metric_label = "Fish Growth" if fish else "Temperature"
+    metric_label = "Fish Growth (% per 10 days)" if fish else "Temperature (°C)"
     caption = f"{season} {metric_label}"
-
     tooltip_cols = [id_col, column_to_plot]
     if fish:
         cmap="plasma"
