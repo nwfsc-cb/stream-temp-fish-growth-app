@@ -15,6 +15,6 @@ FISH_SEASON = {
 }
 
 FISHTABLE = {
-    "Red_Band_Trout_Growth.csv": "Red Band Trout",
-    "Chinook_Salmon_Growth.csv": "Chinook Salmon"
+    "Red_Band_Trout_Growth.csv": "Red Band Trout (10g)",
+    "Chinook_Salmon_Growth.csv": "Chinook Salmon (20g)"
 }

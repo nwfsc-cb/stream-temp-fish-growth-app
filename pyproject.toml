@@ -25,7 +25,7 @@ packages = []
 
 [tool.pixi.workspace]
 channels = ["conda-forge"]
-platforms = ["win-64", "osx-arm64"]
+platforms = ["linux-64", "osx-arm64", "osx-64", "win-64"]
 
 [tool.pixi.pypi-dependencies]
 fish-and-temp-app = { path = ".", editable = true }

@@ -89,6 +89,13 @@ app_ui = ui.page_fluid(
             ui.layout_sidebar(
                 ui.sidebar(
                     ui.accordion(
+                        ui.accordion_panel("Instructions",
+                            ui.p("This app allows you to visualize seasonal stream temperature and fish growth potential for selected regions. After downloading the data, you can plot seasonal maps and analyze fish growth potential."),
+                            ui.p("To get started, select a HUC6 region on the map to fetch its code, or enter any level HUC value manually. Then click 'Download Data' to fetch the relevant datasets - this will require authenticating with"
+                            "Riverscapes Data Exchange. Once the data is ready, you can choose a project, specify the boundary type, and plot seasonal maps."),
+                            ui.p("Using the \"Single HUC \" tab, you can examine fish growth potential either upstream and downstream of a point or analyze annual variability by reach for a single water year. Click on any feature in the seasonal maps to generate a CSV export of the data for that specific feature."),
+                             ui.p("Metrics are calculated as follows: Fish Growth is expressed as a percentage increase in weight over 10 days, while Temperature is reported in degrees Celsius.")  
+                        ),
                         ui.accordion_panel("Downloader",
                             ui.p("Click a region on the map to select its HUC6, or enter it manually."),
                             ui.output_ui("huc_selector_map"), 
@@ -121,7 +128,7 @@ app_ui = ui.page_fluid(
                                 id="yearval",
                                 label="Decade Start Year:",
                                 value="",
-                                placeholder="Type here..."
+                                placeholder="Valid range: 1981-2010"
                             ),
                             ui.input_select(
                                 id="selected_fish",
